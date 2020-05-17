@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-4 mx-auto mt-5">
+        <div class="card bg-dark border-info">
+            <div class="card-header text-info font-weight-bold text-center">
+                <h3>RF RECEPTOR</h3>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)= "doAction()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="RF ID SEARCH" [formControl]="RF_ID"/>
+                    </div>
+                    <div class="text-center">
+                        <button class="container btn btn-outline-primary col-5">
+                            SEARCH
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

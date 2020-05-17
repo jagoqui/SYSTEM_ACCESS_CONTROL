@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crud-access-control-system-v2": {
+      "hosting": {
+        "access-control-system": [
+          "crud-access-control-system-v2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crud-access-control-system-v2"
+  }
+}

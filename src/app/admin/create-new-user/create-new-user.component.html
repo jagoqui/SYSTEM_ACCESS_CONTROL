@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="col-md-4 mx-auto mt-2">
+        <div class="card bg-dark border-info">
+            <div class="card-header text-info font-weight-bold text-center">
+                <h3>{{messageTittle}}</h3>
+            </div>
+            <div class="card-body">
+                <form [formGroup]= "newUserForm" (submit)="onSaveForm()">
+                    <div class="container ">
+                        <!--Name-->
+                        <div class="input-group my-1">
+                            <input type="text" class="form-control" formControlName="name" placeholder="User name">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Name input errors -->
+                        <div class="alert alert-danger" role="alert"
+                            *ngIf="newUserForm.get('name').touched && newUserForm.get('name').invalid">
+                            <div *ngIf="newUserForm.get('name').errors.required">Name is required</div>
+                            <div *ngIf="newUserForm.get('name').errors.minlength">Name must be at least 10 characters</div>
+                        </div>
+                        <!--Bonding type-->
+                        <div class="input-group my-1">
+                            <select formControlName="bonding_type" class="custom-select">
+                                <option value="" hidden>Select user type...</option>
+                                <option value="Student">Student</option>
+                                <option value="Profesor">Professor</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="Worker">Worker</option>
+                                <option value="Guest">Guest</option>
+                            </select>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <div [ngSwitch]="newUserForm.get('bonding_type').value">
+                                        <div class="fa fa-user-circle" *ngSwitchCase="'Student'"></div>
+                                        <div class="fa fa-institution" *ngSwitchCase="'Profesor'"></div>
+                                        <div class="fa fa-graduation-cap" *ngSwitchCase="'Graduate'"></div>
+                                        <div class="fa fa-industry" *ngSwitchCase="'Worker'"></div>
+                                        <div class="fa fa-user-circle-o" *ngSwitchCase="'Guest'"></div>
+                                        <div class="fa fa-users" *ngSwitchDefault></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bounding type input errors -->
+                        <div class="alert alert-danger" role="alert" *ngIf="newUserForm.get('bonding_type').touched && newUserForm.get('bonding_type').invalid">
+                            <div *ngIf="newUserForm.get('bonding_type').errors.required">Bonding type is required</div>
+                        </div>
+                        <!--Email !-->
+                        <div class="input-group my-1">
+                            <input type="email" class="form-control" formControlName="email" placeholder="User email">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Email input errors-->
+                        <div class="alert alert-danger" role="alert"
+                            *ngIf="newUserForm.get('email').touched && newUserForm.get('email').invalid">
+                            <div *ngIf="newUserForm.get('email').errors.required">Email is required</div>
+                            <div *ngIf="newUserForm.get('email').errors.minlength">Email must be at least 15 characters</div>
+                            <div *ngIf="newUserForm.get('email').errors.pattern">Format email invalid</div>
+                        </div>
+                        <!--User identification document-->
+                        <div class="input-group my-1">
+                            <input type="text" class="form-control" formControlName="identification_document"
+                                placeholder="User identification document">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-id-card"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--User identification input errors-->
+                        <div class="alert alert-danger" role="alert"
+                            *ngIf="newUserForm.get('identification_document').touched && newUserForm.get('identification_document').invalid">
+                            <div *ngIf="newUserForm.get('identification_document').errors.required">User identification is required</div>
+                            <div *ngIf="newUserForm.get('identification_document').errors.minlength">User identification must be at least 10 characters</div>
+                        </div>
+                        <!--Vehicule type-->
+                        <div class="input-group my-1">
+                            <select class="custom-select" formControlName="vehicule_type">
+                                <option value="" hidden>Select Vehicule type...</option>
+                                <option value="Bicycle">Bicycle</option>
+                                <option value="Car">Car</option>
+                                <option value="Motorcycle">Motorcycle</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <div [ngSwitch]="newUserForm.get('vehicule_type').value">
+                                        <div class="fa fa-bicycle" *ngSwitchCase="'Bicycle'"></div>
+                                        <div class="fa fa-car" *ngSwitchCase="'Car'"></div>
+                                        <div class="fa fa-motorcycle" *ngSwitchCase="'Motorcycle'"></div>
+                                        <div class="fa fa-ellipsis-h" *ngSwitchCase="'Other'"></div>
+                                        <div class="fa fa-ellipsis-v" *ngSwitchDefault></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Vehicule type input errors -->
+                        <div class="alert alert-danger" role="alert" *ngIf="newUserForm.get('vehicule_type').touched && newUserForm.get('vehicule_type').invalid">
+                            <div *ngIf="newUserForm.get('vehicule_type').errors.required">Bonding type is required</div>
+                        </div>
+                        <!--Model/reference-->
+                        <div class="input-group my-1">
+                            <input type="text" class="form-control" formControlName="model_reference"  placeholder="Vehicule model/reference">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-barcode"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Model/reference input errors-->
+                        <div class="alert alert-danger" role="alert"
+                            *ngIf="newUserForm.get('model_reference').touched && newUserForm.get('model_reference').invalid">
+                            <div *ngIf="newUserForm.get('model_reference').errors.required">Model/reference is required</div>
+                            <div *ngIf="newUserForm.get('model_reference').errors.minlength">Model/reference must be at least 5 characters</div>
+                        </div>
+                        <!--Description-->
+                        <div class="input-group d-inline-flex mt-1">
+                            <div class="form-group">
+                                <textarea class="form-control" formControlName="description" class="form-control" row="3" cols="120"
+                                    placeholder="Description..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Description input errors -->
+                        <div class="alert alert-danger" role="alert"
+                            *ngIf="newUserForm.get('description').touched && newUserForm.get('description').invalid">
+                            <div *ngIf="newUserForm.get('description').errors.required">Description is required</div>
+                            <div *ngIf="newUserForm.get('description').errors.minlength">Description must be at least 20 characters</div>
+                        </div>
+                        <!-- Image -->
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input #imageUser type="file" class="form-control" formControlName="photo_url" accept="image/*" class="custom-file-input" id="inputGroupFile02"
+                                (change)="onUpload($event)"> <!--TODO: Solo almacenar imagen cuando cargue los datos del formulario-->
+                                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose
+                                    image</label>
+                            </div>
+                        </div>
+                        <!-- Progress bar -->
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0"
+                                aria-valuemax="100" [style.width]="(uploadPercent | async) +'%'"></div>
+                        </div>
+                        <input #imageUser type="hidden" [value]="urlImage | async">
+                        <!-- Image input errors -->
+                        <div class="alert alert-danger" role="alert"
+                            *ngIf="newUserForm.get('photo_url').touched && newUserForm.get('photo_url').invalid">
+                            <div *ngIf="newUserForm.get('photo_url').errors.required">Image is required</div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button *ngIf="urlImage | async; else btnDisabled" type="submit"
+                            class="container btn btn-outline-primary col-5">{{buttonText}}</button>  <!--TODO: Activar solo cuando el input data del formulario es correcto!-->
+                        <ng-template #btnDisabled>
+                            <button type="submit" disabled=true class="container btn btn-secondary  col-5">{{buttonText}}</button>
+                        </ng-template>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
